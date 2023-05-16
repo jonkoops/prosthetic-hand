@@ -16,11 +16,11 @@
 				background: rgb(240, 255, 240);
 			}
 		</style>
-		<link href="/node_modules/leaflet/dist/leaflet.css" rel="stylesheet">
+		<link href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" rel="stylesheet">
 		<script type="importmap">
 			{
 				"imports": {
-					"leaflet": "/node_modules/leaflet/dist/leaflet-src.esm.js",
+					"leaflet": "https://unpkg.com/leaflet@1.9.3/dist/leaflet-src.esm.js",
 					"prosthetic-hand": "/lib/Hand.js"
 				}
 			}
@@ -41,7 +41,7 @@
 		</p>
 		<script type="module">
 			import Hand from 'prosthetic-hand';
-			import {Map, LatLng, TileLayer} from 'leaflet';
+			import {Map as LeafletMap, LatLng, TileLayer as TileLayer} from 'leaflet';
 
 			const hand = new Hand();
 			const fingerMouse = hand.growFinger('mouse');
@@ -70,7 +70,7 @@
 					.down().moveBy(-200, 0, 1000).up().wait(1000);
 			}
 
-			const map = new Map('map', { center: new LatLng(45, 6), zoom: 4 });
+			const map = new LeafletMap('map', { center: new LatLng(45, 6), zoom: 4 });
 			const positron = new TileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution/">CartoDB</a>'
 			}).addTo(map);
